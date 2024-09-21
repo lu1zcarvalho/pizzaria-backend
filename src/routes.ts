@@ -10,9 +10,9 @@ import { CreateProductController } from "./controllers/product/CreateProductCont
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
 
-
 import { isAuthenticated } from "./middlewares/isAuthenticated";
 import uploadConfig from "./config/multer";
+import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
 
 const router = Router();
 
@@ -40,10 +40,15 @@ router.post(
   new CreateProductController().handle
 );
 
+router.get(
+  "/category/product",
+  isAuthenticated,
+  new ListByCategoryController().handle
+);
+
 //-- Rotas ORDER
-router.post("/order", isAuthenticated, new CreateOrderController().handle)
+router.post("/order", isAuthenticated, new CreateOrderController().handle);
+router.delete("/order", isAuthenticated, new RemoveOrderController().handle);
 
-
-router.get("/category/product", isAuthenticated, new ListByCategoryController().handle);
 
 export { router };
