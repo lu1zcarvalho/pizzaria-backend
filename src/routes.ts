@@ -1,19 +1,25 @@
 import { Router } from "express";
+
 import multer from "multer";
+import uploadConfig from "./config/multer";
+
+import { isAuthenticated } from "./middlewares/isAuthenticated";
 
 import { CreateUserController } from "./controllers/user/CreateUserController";
 import { AuthUserController } from "./controllers/user/AuthUserController";
 import { DetailUserController } from "./controllers/user/DetailUserController";
+
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
-import { CreateProductController } from "./controllers/product/CreateProductController";
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+
+import { CreateProductController } from "./controllers/product/CreateProductController";
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
+
 import { AddItemController } from "./controllers/order/AddItemController";
-import { isAuthenticated } from "./middlewares/isAuthenticated";
-import uploadConfig from "./config/multer";
-import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
 import { RemoveItemController } from "./controllers/order/RemoveItemController";
+
+import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
 import { ListOrdersController } from "./controllers/order/ListOrdersController"
 import { DetailOrderController } from "./controllers/order/DetailOrderController";
